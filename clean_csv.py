@@ -149,7 +149,12 @@ def process_file(filepath: Path, bank: str):
 
     out_dir = Path("processed")
     out_dir.mkdir(exist_ok=True)
-    out_path = out_dir / f"{bank}-{date.today().strftime('%Y%m%d')}.csv"
+    base = f"{bank}-{date.today().strftime('%Y%m%d')}"
+    out_path = out_dir / f"{base}.csv"
+    n = 1
+    while out_path.exists():
+        n += 1
+        out_path = out_dir / f"{base}-{n}.csv"
 
     with open(out_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f, quoting=csv.QUOTE_ALL)

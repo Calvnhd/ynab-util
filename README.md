@@ -27,7 +27,7 @@ Drop bank CSV exports into `csv-export/` and run:
 uv run clean-csv
 ```
 
-The script auto-detects each bank's format based on the CSV header and writes output to `processed/<bank>-<YYYYMMDD>.csv`. Same-day output is overwritten. Unrecognized files are skipped.
+The script auto-detects each bank's format based on the CSV header and writes output to `processed/<bank>-<YYYYMMDD>.csv` with an incrementing suffix for same-bank same-day processing. Unrecognized files are skipped.
 
 To process a single file with an explicit bank flag:
 
